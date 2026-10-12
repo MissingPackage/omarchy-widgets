@@ -77,6 +77,8 @@ widget "2048" {
     best = max(best, score)
     pulse = moved ? next.map(v => v < 0 ? 1 : 0) : pulse
     slid = moved ? dir : slid
+    // A move that changed nothing plays no animation.
+    moveNow = moved ? moveNow : 0
     board = moved ? next.map((v, k) => k == spot ? (seed % 10 == 0 ? 4 : 2) : abs(v)) : board
     armed = 0
   }
